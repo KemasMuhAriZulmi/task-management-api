@@ -1,0 +1,25 @@
+type Task {
+  id: ID!
+  title: String!
+  description: String
+  dueDate: String!
+  status: String!
+}
+
+input TaskInput {
+  title: String!
+  description: String
+  dueDate: String!
+  status: String!
+}
+
+type Query {
+  getTasks(filterByStatus: String, filterByDueDate: String): [Task!]!
+  getTaskDetail(id: ID!): Task!
+}
+
+type Mutation {
+  createTask(input: TaskInput!): Task!
+  updateTask(id: ID!, input: TaskInput!): Task!
+  deleteTask(id: ID!): String!
+}
